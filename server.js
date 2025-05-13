@@ -16,11 +16,11 @@ mongoose.connect('mongodb+srv://sydrishad:SYDRishad%402001@cluster0.fdkwtgv.mong
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.error("❌ MongoDB Connection Error:", err));
 
+
 // Middleware
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(session({
   secret: 'mySecretKey',
   resave: false,
@@ -36,18 +36,16 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Homepage
+// Routes
 app.get('/', (req, res) => {
   res.render('index');
 });
 
-// Top Destinations Page
 app.get('/destinations', (req, res) => {
   const spots = JSON.parse(fs.readFileSync('./data/spots.json', 'utf8'));
   res.render('destinations', { spots });
 });
 
-// Single destination page
 app.get('/destination/:id', async (req, res) => {
   const id = req.params.id;
   const spots = JSON.parse(fs.readFileSync('./data/spots.json', 'utf8'));
@@ -57,15 +55,15 @@ app.get('/destination/:id', async (req, res) => {
   res.render('destination', { place, reviews });
 });
 
-// Submit a review
 app.post('/review', async (req, res) => {
-  const { placeId, comment } = req.body;
-  const name = req.session.user?.username || 'Anonymous';
-  await Review.create({ placeId, name, comment });
+  const { placeId, comment, name } = req.body;
+
+  const username = req.session.user?.username || name || 'Anonymous';
+  await Review.create({ placeId, name: username, comment });
+
   res.redirect(`/destination/${placeId}`);
 });
 
-// Register page
 app.get('/register', (req, res) => {
   res.render('register');
 });
@@ -80,7 +78,6 @@ app.post('/register', async (req, res) => {
   res.send('✅ Registration successful. <a href="/">Go to Home</a>');
 });
 
-// Login page
 app.get('/login', (req, res) => {
   res.render('login', { loginRole: 'user', message: null });
 });
@@ -89,7 +86,6 @@ app.get('/login/admin', (req, res) => {
   res.render('login', { loginRole: 'admin', message: null });
 });
 
-// Handle user login
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
@@ -103,7 +99,6 @@ app.post('/login', async (req, res) => {
   res.redirect('/');
 });
 
-// Handle admin login
 app.post('/login/admin', async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
@@ -114,7 +109,6 @@ app.post('/login/admin', async (req, res) => {
   res.redirect('/admin/dashboard');
 });
 
-// Admin dashboard
 app.get('/admin/dashboard', async (req, res) => {
   if (!req.session.user || req.session.user.role !== 'admin') {
     return res.status(403).send('Access denied.');
@@ -123,7 +117,6 @@ app.get('/admin/dashboard', async (req, res) => {
   res.render('dashboard', { reviews });
 });
 
-// Delete review
 app.post('/delete-review', async (req, res) => {
   if (!req.session.user || req.session.user.role !== 'admin') {
     return res.status(403).send('Access denied.');
@@ -132,7 +125,6 @@ app.post('/delete-review', async (req, res) => {
   res.redirect('/admin/dashboard');
 });
 
-// Edit review page
 app.get('/edit-review', async (req, res) => {
   if (!req.session.user || req.session.user.role !== 'admin') {
     return res.status(403).send('Access denied.');
@@ -142,7 +134,6 @@ app.get('/edit-review', async (req, res) => {
   res.render('edit-review', { review });
 });
 
-// Update review
 app.post('/update-review', async (req, res) => {
   if (!req.session.user || req.session.user.role !== 'admin') {
     return res.status(403).send('Access denied.');
@@ -154,28 +145,23 @@ app.post('/update-review', async (req, res) => {
   res.redirect('/admin/dashboard');
 });
 
-// Other static content (EJS)
 app.get('/events', (req, res) => res.render('events'));
 app.get('/districts', (req, res) => res.render('districts'));
 app.get('/gallery', (req, res) => res.render('gallery'));
 app.get('/faqs', (req, res) => res.render('faqs'));
 
-// API endpoint
 app.get('/api/about', (req, res) => {
   res.send('<h2>About Kerala Tourism</h2><p>This project showcases Kerala’s tourist spots, events, and interactive features for visitors.</p>');
 });
 
-// Logout
 app.get('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'));
 });
 
-// 404 fallback
 app.use((req, res) => {
   res.status(404).send("Page not found.");
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

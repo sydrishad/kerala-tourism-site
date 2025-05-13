@@ -9,100 +9,58 @@
 <body>
   <%- include('partials/header') %>
 
-    <!-- Header -->
-    <header class="header">
-      <div class="logo-title">
-        <h1>Welcome to Kerala</h1>
-        <p>God's Own Country</p>
-      </div>
-      <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    </header>
+  <div class="content">
+    <h2><%= place.name %></h2>
+    <p><%= place.description %></p>
+    <a href="<%= place.mapLink %>" target="_blank">View on Google Maps</a>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-      <a href="/">Home</a>
-      <a href="/destinations">Destinations</a>
-      <a href="/events">Events</a>
-    </nav>
+    <h3>🗺️ Tourist Spots:</h3>
+    <ul>
+      <% place.spots.forEach(spot => { %>
+        <li><%= spot %></li>
+      <% }) %>
+    </ul>
 
-    <!-- Sidebar -->
-    <div id="sideMenu" class="side-menu">
-      <span class="close-btn" onclick="toggleMenu()">✖</span>
-      <a href="/gallery">📸 Photo Gallery</a>
-      <a href="/districts">📍 Districts in Kerala</a>
-      <a href="/faqs">❓ FAQs</a>
-      <a href="https://www.keralatourism.org/" target="_blank">🌐 Kerala Gov Site</a>
-    </div>
+    <section class="photo-gallery">
+      <h2>📷 Photos:</h2>
+      <% if (place.images && place.images.length > 0) { %>
+        <div class="photo-grid">
+          <% place.images.forEach(img => { %>
+            <img src="/<%= img %>" alt="<%= place.name %> Image">
+          <% }); %>
+        </div>
+      <% } else { %>
+        <p>No photos available.</p>
+      <% } %>
+    </section>
 
-
-    <div class="content">
-
-        
-        <script>
-          function toggleMenu() {
-            document.getElementById("sideMenu").classList.toggle("open");
-          }
-        </script>
-
-        <!-- Destination Content -->
-        <section class="content">
-          <h2><%= place.name %></h2>
-          <p><%= place.description %></p>
-          <a href="<%= place.mapLink %>" target="_blank">View on Google Maps</a>
-
-          <h3>🗺️ Tourist Spots:</h3>
-          <ul>
-            <% place.spots.forEach(function(spot) { %>
-              <li><%= spot %></li>
-            <% }) %>
-          </ul>
-
-        <section class="photo-gallery">
-        <h2>📷 Photos:</h2>
-        <% if (place.images && place.images.length > 0) { %>
-          <div class="photo-grid">
-            <% place.images.forEach(function(img) { %>
-              <img src="/<%= img %>" alt="<%= place.name %> Image">
-            <% }); %>
+    <section class="reviews-section">
+      <h3>💬 Visitor Reviews:</h3>
+      <% if (reviews.length === 0) { %>
+        <p class="no-reviews">No reviews yet. Be the first!</p>
+      <% } else { %>
+        <% reviews.forEach(r => { %>
+          <div class="review-box">
+            <div class="review-name"><%= r.name %></div>
+            <div class="review-comment"><%= r.comment %></div>
           </div>
+        <% }) %>
+      <% } %>
+
+      <h3>✍ Leave a Review:</h3>
+      <form action="/review" method="POST" class="review-form">
+        <input type="hidden" name="placeId" value="<%= place.id %>">
+        <% if (session && session.user) { %>
+          <input type="text" name="name" value="<%= session.user.username %>" readonly>
         <% } else { %>
-          <p>No photos available.</p>
+          <input type="text" name="name" placeholder="Your Name" required>
         <% } %>
-        </section>
+        <textarea name="comment" placeholder="Your Review..." rows="4" required></textarea>
+        <button type="submit">Submit Review</button>
+      </form>
+    </section>
+  </div>
 
-
-        <section class="reviews-section">
-        <h3>💬 Visitor Reviews:</h3>
-
-        <% if (reviews.length === 0) { %>
-          <p class="no-reviews">No reviews yet. Be the first!</p>
-        <% } else { %>
-          <% reviews.forEach(r => { %>
-            <div class="review-box">
-              <div class="review-name"><%= r.name %></div>
-              <div class="review-comment"><%= r.comment %></div>
-            </div>
-          <% }) %>
-        <% } %>
-
-        <h3>✍ Leave a Review:</h3>
-          <form action="/review" method="POST" class="review-form">
-            <input type="hidden" name="placeId" value="<%= place.id %>">
-
-            <% if (session && session.user) { %>
-              <input type="text" name="name" value="<%= session.user.username %>" readonly>
-            <% } else { %>
-              <input type="text" name="name" placeholder="Your Name" required>
-            <% } %>
-
-            <textarea name="comment" placeholder="Your Review..." rows="4" required></textarea>
-            <button type="submit">Submit Review</button>
-          </form>
-        </section>
-
-    
-    </div>
-
-  <%- include('partials/footer') %>
+  <%- include('partials/footer') %>
 </body>
 </html>
