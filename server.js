@@ -120,12 +120,14 @@ app.post('/login/admin', async (req, res) => {
   res.redirect('/admin/dashboard');
 });
 
+
 app.get('/admin/dashboard', async (req, res) => {
   if (!req.session.user || req.session.user.role !== 'admin') {
     return res.status(403).send('Access denied.');
   }
   const reviews = await Review.find();
-  res.render('dashboard', { reviews });
+  const images = await GalleryImage.find(); // Fetch uploaded images
+  res.render('dashboard', { reviews, images });
 });
 
 app.post('/delete-review', async (req, res) => {
@@ -153,6 +155,25 @@ app.post('/update-review', async (req, res) => {
     name: req.body.name,
     comment: req.body.comment
   });
+  res.redirect('/admin/dashboard');
+});
+
+app.post('/admin/delete-image', async (req, res) => {
+  if (!req.session.user || req.session.user.role !== 'admin') {
+    return res.status(403).send('Access denied.');
+  }
+
+  const { id, filename } = req.body;
+
+  // 1. Delete from DB
+  await GalleryImage.findByIdAndDelete(id);
+
+  // 2. Delete from uploads folder
+  const filePath = path.join(__dirname, 'public', 'uploads', filename);
+  if (fs.existsSync(filePath)) {
+    fs.unlinkSync(filePath);
+  }
+
   res.redirect('/admin/dashboard');
 });
 

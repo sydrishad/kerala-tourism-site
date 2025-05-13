@@ -70,6 +70,22 @@
         </div>
       <% }) %>
     <% } %>
+
+        <!-- Uploaded Images Section -->
+    <section class="reviews-section">
+      <h2>Uploaded Gallery Images</h2>
+      <% images.forEach(img => { %>
+        <div class="review-box">
+          <img src="/uploads/<%= img.filename %>" alt="Uploaded" style="max-width: 200px; display:block; margin-bottom: 10px;">
+          <form action="/admin/delete-image" method="POST">
+            <input type="hidden" name="id" value="<%= img._id %>">
+            <input type="hidden" name="filename" value="<%= img.filename %>">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      <% }) %>
+    </section>
+
   </div>
 </body>
 </html>
