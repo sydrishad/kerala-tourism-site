@@ -39,17 +39,51 @@
     }
   </script>
 
-  <!-- Gallery -->
+  <!-- Gallery Section -->
   <section class="events">
     <h2>Photo Gallery</h2>
-    <div class="cards">
-      <div class="card"><h3>Backwater</h3><p><img src="/images/alleppey.jpg" alt="Backwaters" width="100%"></p></div>
-      <div class="card"><h3>Tea Plantation</h3><p><img src="/images/munnar.jpg" alt="Tea" width="100%"></p></div>
-      <div class="card"><h3>Beach</h3><p><img src="/images/kovalam.jpg" alt="Beach" width="100%"></p></div>
+
+    <!-- Upload Form -->
+    <form action="/upload-photo" method="POST" enctype="multipart/form-data" style="margin-bottom: 20px;">
+      <input type="file" name="image" required>
+      <button type="submit">Upload Photo</button>
+    </form>
+
+    <!-- Uploaded Images -->
+    <div class="photo-grid">
+      <% images.forEach(img => { %>
+        <img src="/uploads/<%= img.filename %>" alt="Gallery Upload">
+      <% }) %>
+    </div>
+
+    <!-- Static Images -->
+    <div class="photo-grid" style="margin-top: 40px;">
+      <!-- General Images -->
+      <img src="/images/alleppey.jpg" alt="Alleppey">
+      <img src="/images/bekal.jpg" alt="Bekal Fort">
+      <img src="/images/fortkochi.jpg" alt="Fort Kochi">
+      <img src="/images/kovalam.jpg" alt="Kovalam Beach">
+      <img src="/images/kumarakom.jpg" alt="Kumarakom">
+      <img src="/images/munnar.jpg" alt="Munnar">
+      <img src="/images/munnar1.jpg" alt="Munnar View">
+      <img src="/images/munnar2.jpg" alt="Munnar Hills">
+      <img src="/images/munnar3.jpg" alt="Munnar Plantation">
+      <img src="/images/ponmudi.jpg" alt="Ponmudi Hills">
+      <img src="/images/thekkady.jpg" alt="Thekkady Wildlife">
+
+      <!-- Event Images -->
+      <img src="/images/events/onam.jpg" alt="Onam">
+      <img src="/images/events/thrissur_pooram.jpg" alt="Thrissur Pooram">
+      <img src="/images/events/theyyam.jpg" alt="Theyyam">
+      <img src="/images/events/vishu.jpg" alt="Vishu">
+      <img src="/images/events/navaratri.jpg" alt="Navaratri">
+      <img src="/images/events/attukal.jpg" alt="Attukal Pongala">
+      <img src="/images/events/boat_race.jpg" alt="Boat Race">
+      <img src="/images/events/muharram.jpg" alt="Muharram">
+      <img src="/images/events/christmas.jpg" alt="Christmas">
     </div>
   </section>
 
-  <!-- Footer -->
   <%- include('partials/footer') %>
 </body>
 </html>

@@ -4,9 +4,11 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
+const multer = require('multer');
 
 const User = require('./models/User');
 const Review = require('./models/Review');
+const GalleryImage = require('./models/GalleryImage');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,7 +17,6 @@ const PORT = process.env.PORT || 3000;
 mongoose.connect('mongodb+srv://sydrishad:SYDRishad%402001@cluster0.fdkwtgv.mongodb.net/tourism?retryWrites=true&w=majority')
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.error("❌ MongoDB Connection Error:", err));
-
 
 // Middleware
 app.use(express.static('public'));
@@ -26,6 +27,18 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
+// File upload config
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'public', 'uploads'));
+  },
+  filename: function (req, file, cb) {
+    const uniqueName = Date.now() + '-' + file.originalname;
+    cb(null, uniqueName);
+  }
+});
+const upload = multer({ storage: storage });
 
 // Make session available in all EJS views
 app.use((req, res, next) => {
@@ -57,10 +70,8 @@ app.get('/destination/:id', async (req, res) => {
 
 app.post('/review', async (req, res) => {
   const { placeId, comment, name } = req.body;
-
   const username = req.session.user?.username || name || 'Anonymous';
   await Review.create({ placeId, name: username, comment });
-
   res.redirect(`/destination/${placeId}`);
 });
 
@@ -145,9 +156,21 @@ app.post('/update-review', async (req, res) => {
   res.redirect('/admin/dashboard');
 });
 
+// Image upload routes
+app.get('/gallery', async (req, res) => {
+  const images = await GalleryImage.find().sort({ _id: -1 });
+  res.render('gallery', { images });
+});
+
+app.post('/upload-photo', upload.single('image'), async (req, res) => {
+  if (!req.file) return res.send('No file uploaded');
+  await GalleryImage.create({ filename: req.file.filename });
+  res.redirect('/gallery');
+});
+
+// Other static pages
 app.get('/events', (req, res) => res.render('events'));
 app.get('/districts', (req, res) => res.render('districts'));
-app.get('/gallery', (req, res) => res.render('gallery'));
 app.get('/faqs', (req, res) => res.render('faqs'));
 
 app.get('/api/about', (req, res) => {

@@ -11,76 +11,83 @@
   {
     "id": "alleppey",
     "name": "Alleppey",
-    "description": "Alleppey is famous for its houseboats, backwaters, and serene canals.",
+    "description": "Known for backwaters, houseboats, and lagoons.",
     "mapLink": "https://www.google.com/maps?q=alleppey,+kerala",
-    "spots": ["Alleppey Beach", "Vembanad Lake", "Krishnapuram Palace"],
-    "images": ["images/alleppey1.jpg", "images/alleppey2.jpg"],
+    "spots": ["Backwater Cruise", "Alleppey Beach", "Krishnapuram Palace"],
+    "images": ["images/alleppey1.jpg", "images/alleppey2.jpg", "images/alleppey3.jpg"],
     "image": "images/alleppey.jpg"
   },
   {
     "id": "thekkady",
     "name": "Thekkady",
-    "description": "Thekkady is known for Periyar Wildlife Sanctuary and lush forests.",
+    "description": "Home to Periyar Wildlife Sanctuary and spice plantations.",
     "mapLink": "https://www.google.com/maps?q=thekkady,+kerala",
-    "spots": ["Periyar Lake", "Spice Plantations", "Wildlife Safari"],
-    "images": ["images/thekkady1.jpg", "images/thekkady2.jpg"],
+    "spots": ["Periyar Lake", "Spice Garden", "Bamboo Rafting"],
+    "images": ["images/thekkady1.jpg", "images/thekkady2.jpg", "images/thekkady3.jpg"],
     "image": "images/thekkady.jpg"
   },
   {
     "id": "wayanad",
     "name": "Wayanad",
-    "description": "Wayanad is a green paradise with waterfalls, wildlife, and ancient caves.",
+    "description": "A lush green district with waterfalls and caves.",
     "mapLink": "https://www.google.com/maps?q=wayanad,+kerala",
-    "spots": ["Edakkal Caves", "Banasura Sagar Dam", "Soochipara Falls"],
-    "images": ["images/wayanad1.jpg", "images/wayanad2.jpg"],
+    "spots": ["Edakkal Caves", "Soochipara Falls", "Wayanad Wildlife Sanctuary"],
+    "images": ["images/wayanad1.jpg", "images/wayanad2.jpg", "images/wayanad3.jpg"],
     "image": "images/wayanad.jpg"
-  },
-  {
-    "id": "kumarakom",
-    "name": "Kumarakom",
-    "description": "Kumarakom is a village on Vembanad Lake, known for its bird sanctuary and houseboats.",
-    "mapLink": "https://www.google.com/maps?q=kumarakom,+kerala",
-    "spots": ["Bird Sanctuary", "Backwater Tour", "Vembanad Lake"],
-    "image": "images/kumarakom.jpg"
   },
   {
     "id": "kovalam",
     "name": "Kovalam",
-    "description": "Kovalam is a beach town by the Arabian Sea famous for its lighthouse and surf waves.",
+    "description": "A popular beach town famous for its crescent-shaped shores.",
     "mapLink": "https://www.google.com/maps?q=kovalam,+kerala",
-    "spots": ["Lighthouse Beach", "Hawah Beach", "Samudra Beach"],
+    "spots": ["Lighthouse Beach", "Hawa Beach", "Vellayani Lake"],
+    "images": ["images/kovalam1.jpg", "images/kovalam2.jpg", "images/kovalam3.jpg"],
     "image": "images/kovalam.jpg"
+  },
+  {
+    "id": "bekal",
+    "name": "Bekal",
+    "description": "Famous for Bekal Fort and scenic beach views.",
+    "mapLink": "https://www.google.com/maps?q=bekal,+kerala",
+    "spots": ["Bekal Fort", "Bekal Beach", "Chandragiri Fort"],
+    "images": ["images/bekal1.jpg", "images/bekal2.jpg", "images/bekal3.jpg"],
+    "image": "images/bekal.jpg"
   },
   {
     "id": "fortkochi",
     "name": "Fort Kochi",
-    "description": "Fort Kochi is a historic town with colonial buildings and Chinese fishing nets.",
+    "description": "A historic city blending colonial heritage and local culture.",
     "mapLink": "https://www.google.com/maps?q=fort+kochi,+kerala",
-    "spots": ["Chinese Fishing Nets", "Jew Town", "St. Francis Church"],
+    "spots": ["Chinese Fishing Nets", "Mattancherry Palace", "Jew Town"],
+    "images": ["images/fortkochi1.jpg", "images/fortkochi2.jpg", "images/fortkochi3.jpg"],
     "image": "images/fortkochi.jpg"
   },
   {
     "id": "ponmudi",
     "name": "Ponmudi",
-    "description": "Ponmudi is a hill station near Thiruvananthapuram known for trekking and waterfalls.",
+    "description": "A scenic hill station near Thiruvananthapuram with misty valleys.",
     "mapLink": "https://www.google.com/maps?q=ponmudi,+kerala",
-    "spots": ["Golden Peak", "Meenmutty Falls", "Trekking Trails"],
+    "spots": ["Golden Peak", "Meenmutty Falls", "Peppara Wildlife Sanctuary"],
+    "images": ["images/ponmudi1.jpg", "images/ponmudi2.jpg", "images/ponmudi3.jpg"],
     "image": "images/ponmudi.jpg"
+  },
+  {
+    "id": "kumarakom",
+    "name": "Kumarakom",
+    "description": "Known for bird sanctuary and serene backwaters.",
+    "mapLink": "https://www.google.com/maps?q=kumarakom,+kerala",
+    "spots": ["Bird Sanctuary", "Kumarakom Lake", "Pathiramanal Island"],
+    "images": ["images/kumarakom1.jpg", "images/kumarakom2.jpg", "images/kumarakom3.jpg"],
+    "image": "images/kumarakom.jpg"
   },
   {
     "id": "varkala",
     "name": "Varkala",
-    "description": "Varkala is famous for its cliffs, beaches, and Papanasam pilgrimage site.",
+    "description": "Varkala is a coastal town known for its cliffs, beaches, and spiritual atmosphere.",
     "mapLink": "https://www.google.com/maps?q=varkala,+kerala",
     "spots": ["Varkala Cliff", "Papanasam Beach", "Janardanaswamy Temple"],
+    "images": ["images/varkala1.jpg", "images/varkala2.jpg", "images/varkala3.jpg"],
     "image": "images/varkala.jpg"
-  },
-  {
-    "id": "bekal",
-    "name": "Bekal",
-    "description": "Bekal is known for its historic fort and scenic beach views.",
-    "mapLink": "https://www.google.com/maps?q=bekal,+kerala",
-    "spots": ["Bekal Fort", "Bekal Beach", "Chandragiri Fort"],
-    "image": "images/bekal.jpg"
   }
+
 ]
