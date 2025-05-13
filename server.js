@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/tourism')
+mongoose.connect('mongodb+srv://sydrishad:SYDRishad%402001@cluster0.fdkwtgv.mongodb.net/tourism?retryWrites=true&w=majority')
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.error("❌ MongoDB Connection Error:", err));
 
