@@ -184,6 +184,10 @@ app.get('/gallery', async (req, res) => {
 });
 
 app.post('/upload-photo', upload.single('image'), async (req, res) => {
+  if (!req.session.user) {
+    return res.status(403).send('You must be logged in to upload images.');
+  }
+
   if (!req.file) return res.send('No file uploaded');
   await GalleryImage.create({ filename: req.file.filename });
   res.redirect('/gallery');

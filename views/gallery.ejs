@@ -44,10 +44,14 @@
     <h2>Photo Gallery</h2>
 
     <!-- Upload Form -->
-    <form action="/upload-photo" method="POST" enctype="multipart/form-data" style="margin-bottom: 20px;">
-      <input type="file" name="image" required>
-      <button type="submit">Upload Photo</button>
-    </form>
+    <% if (session && session.user) { %>
+      <form action="/upload-photo" method="POST" enctype="multipart/form-data" style="margin-top: 30px; text-align: center;">
+        <input type="file" name="image" accept="image/*" required />
+        <button type="submit">Upload Photo</button>
+      </form>
+    <% } else { %>
+      <p style="text-align:center; color:#c62828; margin-top: 20px;">Login to upload your photo.</p>
+    <% } %>
 
     <!-- Uploaded Images -->
     <div class="photo-grid">
