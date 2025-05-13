@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Review</title>
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 30px;
+    }
+    
+     .edit-btn {
+  background: #007b5e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.edit-btn:hover {
+  background: #005f47;
+}
+
+    .edit-box {
+      background-color: #ffffff;
+      padding: 25px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .edit-box h2 {
+      text-align: center;
+      color: #007b5e;
+    }
+
+    .edit-box input[type="text"],
+    .edit-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .edit-box button {
+      background-color: #007b5e;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .edit-box button:hover {
+      background-color: #005f47;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-link a {
+      color: #007b5e;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="edit-box">
+    <h2>Edit Review</h2>
+    <form action="/update-review" method="POST">
+      <input type="hidden" name="id" value="<%= review._id %>">
+      <label>Name:</label>
+      <input type="text" name="name" value="<%= review.name %>" required>
+      <label>Comment:</label>
+      <textarea name="comment" rows="5" required><%= review.comment %></textarea>
+      <button type="submit">Update Review</button>
+    </form>
+    <div class="back-link">
+      <a href="/admin">← Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

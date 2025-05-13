@@ -1,0 +1,15 @@
+<nav style="background:#007b5e; padding:10px; color:white; display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <a href="/" style="color:white; font-weight:bold; text-decoration:none;">Kerala Tourism</a>
+    </div>
+  
+    <div>
+      <% if (session && session.user) { %>
+        <span style="margin-right: 15px;">Welcome, <%= session.user.username %>!</span>
+        <a href="/logout" style="color:white; background:#c62828; padding:6px 12px; border-radius:4px; text-decoration:none;">Logout</a>
+      <% } else { %>
+        <a href="/login" style="color:white; margin-right: 10px;">Login</a>
+        <a href="/register" style="color:white;">Register</a>
+      <% } %>
+    </div>
+  </nav>

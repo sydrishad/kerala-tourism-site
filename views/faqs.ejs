@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs | Kerala Tourism</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <%- include('partials/header') %>
+
+  <!-- Header & Navbar -->
+  <header class="header">
+    <div class="logo-title">
+      <h1>Welcome to Kerala</h1>
+      <p>God's Own Country</p>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/destinations">Destinations</a>
+    <a href="/events">Events</a>
+  </nav>
+
+  <div id="sideMenu" class="side-menu">
+    <span class="close-btn" onclick="toggleMenu()">✖</span>
+    <a href="/gallery">📸 Photo Gallery</a>
+    <a href="/districts">📍 Districts in Kerala</a>
+    <a href="/faqs">❓ FAQs</a>
+    <a href="https://www.keralatourism.org/" target="_blank">🌐 Kerala Gov Site</a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("open");
+    }
+  </script>
+
+  <!-- FAQs -->
+  <section class="events">
+    <h2>Frequently Asked Questions</h2>
+    <div class="cards">
+      <div class="card"><h3>Best time to visit Kerala?</h3><p>Between October and March is ideal.</p></div>
+      <div class="card"><h3>Do I need a visa to visit Kerala?</h3><p>Yes, unless you're from a visa-exempt country.</p></div>
+      <div class="card"><h3>Is Kerala safe for solo travelers?</h3><p>Yes, it’s one of the safest destinations in India.</p></div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

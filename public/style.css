@@ -1,0 +1,423 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden; /* ✅ HIDE any peeking */
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007b5e;
+  color: white;
+  padding: 20px;
+  position: relative;
+}
+
+.logo-title {
+  text-align: center;
+}
+
+.menu-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #004d40;
+  padding: 15px;
+  text-align: center;
+}
+
+.navbar a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.hero img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 250px;
+  height: 100%;
+  background-color: #013220; /* 🌿 Dark green shade for sidebar */
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; /* ✅ fix peek caused by padding */
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid #4CAF50; /* ✅ Line separator */
+}
+
+.side-menu a:last-child {
+  border-bottom: none; /* Remove line for the last item */
+}
+
+.close-btn {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-align: right;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #eee;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .logo-title {
+    text-align: center;
+  }
+
+  .logo-title h1 {
+    font-size: 24px;
+  }
+
+  .hero img {
+    height: 250px;
+  }
+}
+
+/* === DESTINATIONS CARD STYLE === */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 280px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 15px 0 10px;
+  font-size: 20px;
+  color: #007b5e;
+}
+
+.card .button {
+  background-color: #007b5e;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.card .button:hover {
+  background-color: #005f47;
+}
+.weather-tool {
+  background-color: #e3f2f1;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 500px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.weather-tool input {
+  padding: 10px;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.weather-tool button {
+  padding: 10px 20px;
+  background-color: #007b5e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* === DESTINATION PAGE SECTIONS === */
+.content, .spots, .reviews, .review-form, .photos, .weather, .section {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Headings */
+h2, h3 {
+  color: #007b5e;
+  margin-top: 0;
+}
+
+/* === REVIEW STYLING === */
+.reviews .review {
+  background-color: #f1f1f1;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-left: 4px solid #007b5e;
+  border-radius: 6px;
+}
+
+/* Review Form */
+.review-form textarea,
+.review-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.review-form button {
+  background-color: #007b5e;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.review-form button:hover {
+  background-color: #005f47;
+}
+
+.photo-gallery {
+  margin: 40px 0;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photo-gallery h2 {
+  color: #00695c;
+  margin-bottom: 15px;
+}
+
+.photo-grid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.photo-grid img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* === ADMIN LOGIN & DASHBOARD STYLING === */
+.admin-container {
+  max-width: 500px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007b5e;
+}
+
+.admin-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.admin-container button {
+  width: 100%;
+  background-color: #007b5e;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.admin-container button:hover {
+  background-color: #005f47;
+}
+
+.reviews-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.review-box {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.review-name {
+  font-weight: bold;
+  color: #007b5e;
+  margin-bottom: 4px;
+}
+
+.review-comment {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.no-reviews {
+  color: #999;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.review-form input,
+.review-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.review-form textarea {
+  resize: vertical;
+}
+
+.review-form button {
+  background-color: #007b5e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.review-form button:hover {
+  background-color: #005f47;
+}
+
+.review-form {
+  max-width: 600px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-form input[type="text"],
+.review-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.review-form input[readonly] {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.review-form button {
+  background-color: #007b5e;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.review-form button:hover {
+  background-color: #005f47;
+}
+
+
+/* Apply flex layout to body and html */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the content area grow to fill space */
+body > .content {
+  flex: 1;
+}

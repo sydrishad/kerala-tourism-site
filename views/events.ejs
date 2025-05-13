@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events | Kerala Tourism</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <%- include('partials/header') %>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-title">
+      <h1>Welcome to Kerala</h1>
+      <p>God's Own Country</p>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/destinations">Destinations</a>
+    <a href="/events">Events</a>
+  </nav>
+
+  <!-- Sidebar -->
+  <div id="sideMenu" class="side-menu">
+    <span class="close-btn" onclick="toggleMenu()">✖</span>
+    <a href="/gallery">📸 Photo Gallery</a>
+    <a href="/districts">📍 Districts in Kerala</a>
+    <a href="/faqs">❓ FAQs</a>
+    <a href="https://www.keralatourism.org/" target="_blank">🌐 Kerala Gov Site</a>
+  </div>
+
+  <!-- JS Toggle Menu -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("open");
+    }
+  </script>
+
+  <!-- Event Section -->
+  <section class="events">
+    <h2>Festivals and Events in Kerala</h2>
+    <div class="cards">
+      <div class="card"><h3>Onam</h3><p>Harvest festival with vibrant pookalams, sadya, and Vallam Kali.</p></div>
+      <div class="card"><h3>Thrissur Pooram</h3><p>Grand temple festival known for its elephant procession and fireworks.</p></div>
+      <div class="card"><h3>Theyyam</h3><p>Ritual art form with elaborate costumes and divine performances.</p></div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

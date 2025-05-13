@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    .dashboard {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #007b5e;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .review {
+      background: #f2f2f2;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .review strong {
+      color: #007b5e;
+    }
+    .review em {
+      color: #444;
+      font-style: italic;
+    }
+    .delete-btn {
+      background: #c62828;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+    .delete-btn:hover {
+      background: #a10c0c;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="dashboard">
+    <h2>All Reviews</h2>
+    <% if (reviews.length === 0) { %>
+      <p>No reviews available.</p>
+    <% } else { %>
+      <% reviews.forEach((r) => { %>
+        <div class="review">
+          <strong><%= r.name %></strong> on <em><%= r.placeId %></em>
+          <p><%= r.comment %></p>
+          <!-- Edit -->
+          <form action="/edit-review" method="GET" style="display:inline;">
+            <input type="hidden" name="id" value="<%= r._id %>">
+            <button type="submit" class="edit-btn">Edit</button>
+          </form>
+          <!-- Delete -->
+          <form action="/delete-review" method="POST" style="display:inline;">
+            <input type="hidden" name="id" value="<%= r._id %>">
+            <button type="submit" class="delete-btn">Delete</button>
+          </form>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Kerala Tourism</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <%- include('partials/header') %>
+
+  <!-- Header & Navbar -->
+  <header class="header">
+    <div class="logo-title">
+      <h1>Welcome to Kerala</h1>
+      <p>God's Own Country</p>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/destinations">Destinations</a>
+    <a href="/events">Events</a>
+  </nav>
+
+  <div id="sideMenu" class="side-menu">
+    <span class="close-btn" onclick="toggleMenu()">✖</span>
+    <a href="/gallery">📸 Photo Gallery</a>
+    <a href="/districts">📍 Districts in Kerala</a>
+    <a href="/faqs">❓ FAQs</a>
+    <a href="https://www.keralatourism.org/" target="_blank">🌐 Kerala Gov Site</a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("open");
+    }
+  </script>
+
+  <!-- Gallery -->
+  <section class="events">
+    <h2>Photo Gallery</h2>
+    <div class="cards">
+      <div class="card"><h3>Backwater</h3><p><img src="/images/alleppey.jpg" alt="Backwaters" width="100%"></p></div>
+      <div class="card"><h3>Tea Plantation</h3><p><img src="/images/munnar.jpg" alt="Tea" width="100%"></p></div>
+      <div class="card"><h3>Beach</h3><p><img src="/images/kovalam.jpg" alt="Beach" width="100%"></p></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <%- include('partials/footer') %>
+</body>
+</html>
